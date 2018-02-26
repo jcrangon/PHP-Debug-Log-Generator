@@ -154,7 +154,7 @@ $_SESSION["usedebug"]=1;
 the execution of the code :
 
      
-    <code>if($logenabled){wlog($Arg1,$Arg2,$_SESSION["logfile"],_ _ FILE _ _,__LINE__);}</code> 
+    <code>if($logenabled){wlog($Arg1,$Arg2,$_SESSION["logfile"], __ FILE __ , __ LINE __);}</code> 
     
     $Arg1 = description of what is being logged
     
