@@ -125,7 +125,7 @@ session_start();
     
 // usage:                                                                                       
 
-//<code> if($logenabled){wlog("tableau de session",$_SESSION,$_SESSION["logfile"],__FILE__,__LINE__);} </code>
+//<php> if($logenabled){wlog("tableau de session",$_SESSION,$_SESSION["logfile"],__FILE__,__LINE__);} </php>
 
 // <code>if($logenabled){wlog("Dans la procedure X","",$_SESSION["logfile"],__FILE__,__LINE__);} </code>
 
