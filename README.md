@@ -162,7 +162,7 @@ the execution of the code :
     
 Using the controls button :
   - 'Show Log' opens a new tab in the browser and displays the content of the log file
-  - 'clear Log' deletes all contents il the log file.
+  - 'Clear Log' deletes all contents il the log file.
 
 Found this simple, logging systeme very practical to debug such things as google recaptcha for instance.
 
