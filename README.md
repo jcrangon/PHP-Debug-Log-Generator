@@ -153,13 +153,13 @@ $_SESSION["usedebug"]=1;
 7. Usage: place this line inside the code where you want to log variables or check 
 the execution of the code :
 
-    // 
+    <code> 
     if($logenabled){wlog($Arg1,$Arg2,$_SESSION["logfile"],__FILE__,__LINE__);} 
     
     $Arg1 = description of what is being logged
     
     $Arg2 = variable that will be dumped in the log
-    
+    </code>
 Using the controls button :
   - 'Show Log' opens a new tab in the browser and displays the content of the log file
   - 'clear Log' deletes all contents il the log file.
