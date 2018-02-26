@@ -52,11 +52,11 @@ session_start();
     } 
 // usage: 
 
-//<code> if($logenabled){wlog("tableau de session",$_SESSION,$_SESSION["logfile"],__FILE__,__LINE__);}</code>
+//<code> <pre>if($logenabled){wlog("tableau de session",$_SESSION,$_SESSION["logfile"], __ FILE __ , __ LINE __ );}</pre></code>
 
-//<code> if($logenabled){wlog("Dans la procedure X","",$_SESSION["logfile"],__FILE__,__LINE__);} </code>
+//<code> <pre>if($logenabled){wlog("Dans la procedure X","",$_SESSION["logfile"], __ FILE __ , __ LINE __ );}</pre> </code>
 
-//<code> if($logenabled){wlog($Arg1,$Arg2,$_SESSION["logfile"],__FILE__,__LINE__);}  </code>
+//<code> <pre>if($logenabled){wlog($Arg1,$Arg2,$_SESSION["logfile"], __ FILE __ , __ LINE __ );} </pre> </code>
 
 ////////////////////////////////////////////////////////////////////////////////////////////////////
 
@@ -68,7 +68,7 @@ session_start();
     
 |-----------------------------------------------------------------------------------------------------------
 
-  <?php if($_SESSION["usedebug"]==1){include($_SESSION["loggerdiv"]); }?>
+ <code><pre> <?php if($_SESSION["usedebug"]==1){include($_SESSION["loggerdiv"]); }?> </pre></code>
   
 |-----------------------------------------------------------------------------------------------------------
 
@@ -125,11 +125,11 @@ session_start();
     
 // usage:                                                                                       
 
-//<code> <pre>if($logenabled){wlog("tableau de session",$_SESSION,$_SESSION["logfile"],__FILE__,__LINE__);} </pre> </code>
+//<code> <pre>if($logenabled){wlog("tableau de session",$_SESSION,$_SESSION["logfile"], __ FILE __ , __ LINE __);} </pre> </code>
 
-// <code>if($logenabled){wlog("Dans la procedure X","",$_SESSION["logfile"],__FILE__,__LINE__);} </code>
+// <code> <pre>if($logenabled){wlog("Dans la procedure X","",$_SESSION["logfile"], __ FILE __ , __ LINE __);}</pre> </code>
 
-// <code>if($logenabled){wlog($Arg1,$Arg2,$_SESSION["logfile"],__FILE__,__LINE__);}     </code> 
+// <code><pre>if($logenabled){wlog($Arg1,$Arg2,$_SESSION["logfile"], __ FILE __ , __ LINE __);} </pre>  </code> 
 
 ////////////////////////////////////////////////////////////////////////////////////////////////////
 
@@ -154,7 +154,7 @@ $_SESSION["usedebug"]=1;
 the execution of the code :
 
      
-    <code>if($logenabled){wlog($Arg1,$Arg2,$_SESSION["logfile"], __FILE__ , __LINE__);}</code> 
+    <code><pre>if($logenabled){wlog($Arg1,$Arg2,$_SESSION["logfile"], __ FILE __ , __ LINE __);}</pre></code> 
     
     $Arg1 = description of what is being logged
     
