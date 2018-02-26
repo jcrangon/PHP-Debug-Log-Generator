@@ -157,7 +157,7 @@ the execution of the code :
     $Arg2 = variable that will be dumped in the log
     
 Using the controls button :
-  - 'Show Log' open a new tab in the browser and displays the content of the log file
+  - 'Show Log' opens a new tab in the browser and displays the content of the log file
   - 'clear Log' deletes all contents il the log file.
 
 Found this simple, logging systeme very practical to debug such things as google recaptcha for instance.
