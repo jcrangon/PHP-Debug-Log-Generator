@@ -50,13 +50,13 @@ session_start();
       $logenabled=false; 
       
     } 
-// usage:                                                                                         //
+// usage: 
 
-// if($logenabled){wlog("tableau de session",$_SESSION,$_SESSION["logfile"],__FILE__,__LINE__);}  //
+//<code> if($logenabled){wlog("tableau de session",$_SESSION,$_SESSION["logfile"],__FILE__,__LINE__);}</code>
 
-// if($logenabled){wlog("Dans la procedure X","",$_SESSION["logfile"],__FILE__,__LINE__);}        //
+//<code> if($logenabled){wlog("Dans la procedure X","",$_SESSION["logfile"],__FILE__,__LINE__);} </code>
 
-// if($logenabled){wlog($Arg1,$Arg2,$_SESSION["logfile"],__FILE__,__LINE__);}                     //
+//<code> if($logenabled){wlog($Arg1,$Arg2,$_SESSION["logfile"],__FILE__,__LINE__);}  </code>
 
 ////////////////////////////////////////////////////////////////////////////////////////////////////
 
@@ -125,7 +125,7 @@ session_start();
     
 // usage:                                                                                       
 
-//<php> if($logenabled){wlog("tableau de session",$_SESSION,$_SESSION["logfile"],__FILE__,__LINE__);} </php>
+//<code> if($logenabled){wlog("tableau de session",$_SESSION,$_SESSION["logfile"],__FILE__,__LINE__);} </code>
 
 // <code>if($logenabled){wlog("Dans la procedure X","",$_SESSION["logfile"],__FILE__,__LINE__);} </code>
 
