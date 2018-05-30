@@ -14,13 +14,13 @@ session_start();
     $pathto_logger_file="./logger";
 //////////////////////////////////////////////////////////////////////////////////
 // Loads the logger if activated 
+    $_SESSION["pathtologger"]=$pathto_logger_file;
     include($pathto_debug_conf);
     if($_SESSION["usedebug"]==1){
-      checkloggersession(__FILE__,__LINE__);
-      $_SESSION["pathtologger"]=$pathto_logger_file; 
       $logenabled=true; 
       mkpaths($_SESSION["pathtologger"]);  
       include($_SESSION["loggerlib"]);
+      checkloggersession(__FILE__,__LINE__);  
       setlogfile($_SESSION["logfile"],__FILE__,__LINE__); 
       setlogpage($_SESSION["logpage"],__FILE__,__LINE__); 
       checkloggerenv(__FILE__,__LINE__);
@@ -53,17 +53,17 @@ session_start();
     $ajaxpathto_logger_file="../logger";
 //////////////////////////////////////////////////////////////////////////////////
 // Loads the logger if activated 
+    $_SESSION["pathtologger"]=$ajaxpathto_logger_file;
     include($ajaxpathto_debug_conf);
     if($_SESSION["usedebug"]==1){
-      checkloggersession(__FILE__,__LINE__);
-      $_SESSION["ajaxpathtologger"]=$ajaxpathto_logger_file; 
       $logenabled=true; 
-      mkpaths($_SESSION["ajaxpathtologger"]);  
-      include($_SESSION["ajaxloggerlib"]);
-      setajaxlogfile($_SESSION["logfile"],__FILE__,__LINE__); 
-      setajaxlogpage($_SESSION["logpage"],__FILE__,__LINE__); 
-      checkajaxloggerenv(__FILE__,__LINE__);
-      mkajaxlog(__FILE__,__LINE__);
+      mkpaths($_SESSION["pathtologger"]);  
+      include($_SESSION["loggerlib"]);
+      checkloggersession(__FILE__,__LINE__);  
+      setlogfile($_SESSION["logfile"],__FILE__,__LINE__); 
+      setlogpage($_SESSION["logpage"],__FILE__,__LINE__); 
+      checkloggerenv(__FILE__,__LINE__);
+      mklog(__FILE__,__LINE__);
     } 
     else{   
       $logenabled=false; 
