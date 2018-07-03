@@ -7,33 +7,24 @@ The following explains installation and configuration of the logger.
 
 session_start();
 |------------------------------------------------------------------------
-//////////////////////////  LOGGER ///////////////////////////////////////////////
+//////////////////////////  LOGGER /////////////////////////////////////
 // Enter the relative path to debug.conf.php :                              
-    $pathto_debug_conf="./conf/debug.conf.php";
+    $pathto_debug_conf="./config/debug.conf.php";
 //Enter relative path to logger folder :
     $pathto_logger_file="./logger";
-//////////////////////////////////////////////////////////////////////////////////
+////////////////////////////////////////////////////////////////////////
 // Loads the logger if activated 
-    $_SESSION["pathtologger"]=$pathto_logger_file;
-    include($pathto_debug_conf);
-    if($_SESSION["usedebug"]==1){
-      $logenabled=true; 
-      mkpaths($_SESSION["pathtologger"]);  
-      include($_SESSION["loggerlib"]);
-      checkloggersession(__FILE__,__LINE__);  
-      setlogfile($_SESSION["logfile"],__FILE__,__LINE__); 
-      setlogpage($_SESSION["logpage"],__FILE__,__LINE__); 
-      checkloggerenv(__FILE__,__LINE__);
-      mklog(__FILE__,__LINE__);
-    } 
-    else{   
-      $logenabled=false; 
-    } 
-// usage:                                                                                         //
-// if($logenabled){wlog("tableau de session",$_SESSION,$_SESSION["logfile"],__FILE__,__LINE__);}  //
-// if($logenabled){wlog("Dans la procedure X","",$_SESSION["logfile"],__FILE__,__LINE__);}        //
-// if($logenabled){wlog($Arg1,$Arg2,$_SESSION["logfile"],__FILE__,__LINE__);}                     //
-////////////////////////////////////////////////////////////////////////////////////////////////////
+	include($pathto_logger_file."/logger.php");
+// usage in script:	
+// if($logenabled){wlog("$ SESSION",$_SESSION,$_SESSION["logfile"],__FILE__,__LINE__));
+// if($logenabled){wlog("Dans la procedure X","",$_SESSION["logfile"],__FILE__,__LINE__);} 
+// if($logenabled){wlog($Arg1,$Arg2,$_SESSION["logfile"],__FILE__,__LINE__));}
+//
+// to use inside individual functions :
+// if($_SESSION["logenabled"]){wlog("$ SESSION",$_SESSION,$_SESSION["logfile"],__FILE__,__LINE__));
+// if($_SESSION["logenabled"]){wlog("Dans la procedure X","",$_SESSION["logfile"],__FILE__,__LINE__);} 
+// if($_SESSION["logenabled"]){wlog($Arg1,$Arg2,$_SESSION["logfile"],__FILE__,__LINE__));}
+//////////////////////////////////////////////////////////////////////////////////////////////////////
 |-----------------------------------------------------------------------------------------------------------
 
 4. In order to get acces to the control button directly on the page, paste the following code in the top level
@@ -46,40 +37,33 @@ session_start();
 
 session_start();
 |------------------------------------------------------------------------
-//////////////////////////  LOGGER ///////////////////////////////////////////////
+//////////////////////////  LOGGER /////////////////////////////////////
 // Enter the relative path to debug.conf.php :                              
-    $ajaxpathto_debug_conf="../conf/debug.conf.php";
+    $ajaxpathto_debug_conf="../config/debug.conf.php";
 //Enter relative path to logger folder :
     $ajaxpathto_logger_file="../logger";
-//////////////////////////////////////////////////////////////////////////////////
+////////////////////////////////////////////////////////////////////////
 // Loads the logger if activated 
-    $_SESSION["ajaxpathtologger"]=$ajaxpathto_logger_file;
-    include($ajaxpathto_debug_conf);
-    if($_SESSION["usedebug"]==1){
-      $logenabled=true; 
-      mkajaxpaths($_SESSION["ajaxpathtologger"]);  
-      include($_SESSION["ajaxloggerlib"]);
-      checkloggersession(__FILE__,__LINE__);  
-      setajaxlogfile($_SESSION["ajaxlogfile"],__FILE__,__LINE__); 
-      setajaxlogpage($_SESSION["ajaxlogpage"],__FILE__,__LINE__); 
-      checkajaxloggerenv(__FILE__,__LINE__);
-      mkajaxlog(__FILE__,__LINE__);
-    } 
-    else{   
-      $logenabled=false; 
-    } 
-// usage:                                                                                         //
-// if($logenabled){wlog("tableau de session",$_SESSION,$_SESSION["logfile"],__FILE__,__LINE__);}  //
-// if($logenabled){wlog("Dans la procedure X","",$_SESSION["logfile"],__FILE__,__LINE__);}        //
-// if($logenabled){wlog($Arg1,$Arg2,$_SESSION["logfile"],__FILE__,__LINE__);}                     //
-////////////////////////////////////////////////////////////////////////////////////////////////////
+	include($ajaxpathto_logger_file."/ajaxlogger.php");
+// usage:
+// if($logenabled){wlog("$ SESSION",$_SESSION,$_SESSION["ajaxlogfile"],__FILE__,__LINE__);
+// if($logenabled){wlog("Dans la procedure X","",$_SESSION["ajaxlogfile"],__FILE__,__LINE__);}
+// if($logenabled){wlog($Arg1,$Arg2,$_SESSION["ajaxlogfile"],__FILE__,__LINE__);}
+//
+// for use inside individual functions :
+// if($_SESSION["logenabled"]){wlog("$ SESSION",$_SESSION,$_SESSION["ajaxlogfile"],__FILE__,__LINE__);
+// if($_SESSION["logenabled"]){wlog("Dans la procedure X","",$_SESSION["ajaxlogfile"],__FILE__,__LINE__);}
+// if($_SESSION["logenabled"]){wlog($Arg1,$Arg2,$_SESSION["ajaxlogfile"],__FILE__,__LINE__);}
+//////////////////////////////////////////////////////////////////////////////////////////////////////////
 |-----------------------------------------------------------------------------------------------------------
 
 6. Edit the file 'debug.conf.php' :
+   Edit the verbosity level (1 -> low, 2->medium, 3->max)
 
 /////////////////////////////////////////////////////////////////////////////
 // Activation switch 0-OFF, 1-ON 
 $_SESSION["usedebug"]=1;
+$_SESSION["debugverbose"]=1; // range 1-3                                  //
 //
 /////////////////////////////////////////////////////////////////////////////
 

@@ -20,21 +20,44 @@ function checkloggerenv($f,$l){
 		die("setlogpage() : cannot fopen log file @".$location);
 	}
 	else{
-		$lmsg="Appel checkloggerenv() @".$location." correctement executé, variables de session vérifées.";
-		$line=mkline($lmsg);
-		fwrite($fh,$line);
-		fclose($fh);
+		switch ($_SESSION["debugverbose"]){
+			case 3:
+				$lmsg="Appel checkloggerenv() @".$location." correctement executé, variables de session vérifées.";
+				$line=mkline($lmsg,0);
+				fwrite($fh,$line);
+				fclose($fh);
+				break;
+		}
 	}
 }
 
-function mkline($lmsg){
+function mkline($lmsg,$sp){
+	$line="";
 	$now=date("d-m-Y H:i:s");
 	$ipAddress = $_SERVER['REMOTE_ADDR'];
 	if (array_key_exists('HTTP_X_FORWARDED_FOR', $_SERVER)) {
 		$exploded= explode(',', $_SERVER['HTTP_X_FORWARDED_FOR']);
 		$ipAddress = array_pop($exploded);
 	}
-	$line="[".$now."] -> [".$ipAddress."]- ".$lmsg." \n";
+	if($sp==1){
+		$line="\n\n";
+	}
+	
+	switch ($_SESSION["debugverbose"]){
+		
+		case 1:
+			$line.=$lmsg." \n";
+			break;
+		
+		case 2:
+			$line.="[".$now."] -> ".$lmsg." \n";
+			break;
+		
+		case 3:
+			$line.="[".$now."] -> [".$ipAddress."]- ".$lmsg." \n";
+			break;
+	}
+	
 	return $line;
 }
 
@@ -44,10 +67,14 @@ function setlogfile($file,$f,$l){
 		die("setlogfile() : cannot fopen log file");
 	}
 	else{
-		$lmsg="Appel setlogfile() @".$location;
-		$line=mkline($lmsg);
-		fwrite($fh,$line);
-		fclose($fh);
+		switch ($_SESSION["debugverbose"]){
+			case 3:
+				$lmsg="Appel setlogfile() @".$location;
+				$line=mkline($lmsg,1);
+				fwrite($fh,$line);
+				fclose($fh);
+				break;
+		}	
 	}
 }
 
@@ -67,10 +94,21 @@ function setlogpage($file,$f,$l){
 				$exploded= explode(',', $_SERVER['HTTP_X_FORWARDED_FOR']);
 				$ipAddress = array_pop($exploded);
 			}
-			$lmsg="Appel setlogpage() @".$location."\n Initiating for IP: ".$ipAddress;
-			$line=mkline($lmsg);
-			fwrite($fh,$line);
-			fclose($fh);
+			switch ($_SESSION["debugverbose"]){
+				case 2:
+					$lmsg=" Initiating for IP: ".$ipAddress;
+					$line=mkline($lmsg,1);
+					fwrite($fh,$line);
+					fclose($fh);
+					break;
+					
+				case 3:
+					$lmsg="Appel setlogpage() @".$location."\n Initiating for IP: ".$ipAddress;
+					$line=mkline($lmsg,0);
+					fwrite($fh,$line);
+					fclose($fh);
+					break;
+			}
 		}
 	}
 }
@@ -82,10 +120,21 @@ function mklog($f,$l){
 		die("mklog() : cannot fopen log file @".$location);
 	}
 	else{
-		$lmsg="Appel mklog() @".$location." ..... Starting the log .............";
-		$line=mkline($lmsg);
-		fwrite($fh,$line);
-		fclose($fh);
+		switch ($_SESSION["debugverbose"]){
+			case 3:
+				$lmsg="Appel mklog() @".$location." ..... Starting the log .............";
+				$line=mkline($lmsg,0);
+				fwrite($fh,$line);
+				fclose($fh);
+				break;
+			
+			default:
+				$lmsg=" ..... Starting the log .............";
+				$line=mkline($lmsg,1);
+				fwrite($fh,$line);
+				fclose($fh);
+				break;
+		}
 	}
 	$content=file_get_contents($file);
 	$htmlcontent="<pre>".$content."</pre>";
@@ -116,13 +165,33 @@ function clearpage($file,$f,$l){
 
 function wlog( $varname, $vardata,$file, $f,$l){
 	$location=$f." Line ".$l;
+	if(is_bool($vardata)){
+		if($vardata){
+			$vardata="TRUE";
+		}
+		else{
+			$vardata="FALSE";
+		}
+	}
 	$serialized=print_r($vardata,true);  // true permet de recup la valeur de print_r sans l'afficher a l'ecran
 	if(!$fh=fopen($file,"a")){
 		die("wlog() : cannot fopen log file @".$location);
 	}
 	else{
-		$lmsg="wlog @ ".$location.": \n".$varname." = ".$serialized;
-		$line=mkline($lmsg);
+		switch ($_SESSION["debugverbose"]){
+			case 1:
+				$lmsg=$varname." = ".$serialized;
+				break;
+				
+			case 2:
+				$lmsg="wlog @ Line".$l.": \n".$varname." = ".$serialized;
+				break;
+				
+			case 3:
+				$lmsg="wlog @ ".$location.": \n".$varname." = ".$serialized;
+				break;
+		}
+		$line=mkline($lmsg,0);
 		fwrite($fh,$line);
 		$content=file_get_contents($file);
 		$htmlcontent="<pre>".$content."</pre>";
