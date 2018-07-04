@@ -16,14 +16,14 @@ session_start();
 // Loads the logger if activated 
 	include($pathto_logger_file."/logger.php");
 // usage in script:	
-// if($logenabled){wlog("$ SESSION",$_SESSION,$_SESSION["logfile"],__FILE__,__LINE__));
+// if($logenabled){wlog("$ SESSION",$_SESSION,$_SESSION["logfile"],__FILE__,__LINE__);}
 // if($logenabled){wlog("Dans la procedure X","",$_SESSION["logfile"],__FILE__,__LINE__);} 
-// if($logenabled){wlog($Arg1,$Arg2,$_SESSION["logfile"],__FILE__,__LINE__));}
+// if($logenabled){wlog($Arg1,$Arg2,$_SESSION["logfile"],__FILE__,__LINE__);}
 //
 // to use inside individual functions :
-// if($_SESSION["logenabled"]){wlog("$ SESSION",$_SESSION,$_SESSION["logfile"],__FILE__,__LINE__));
+// if($_SESSION["logenabled"]){wlog("$ SESSION",$_SESSION,$_SESSION["logfile"],__FILE__,__LINE__);}
 // if($_SESSION["logenabled"]){wlog("Dans la procedure X","",$_SESSION["logfile"],__FILE__,__LINE__);} 
-// if($_SESSION["logenabled"]){wlog($Arg1,$Arg2,$_SESSION["logfile"],__FILE__,__LINE__));}
+// if($_SESSION["logenabled"]){wlog($Arg1,$Arg2,$_SESSION["logfile"],__FILE__,__LINE__);}
 //////////////////////////////////////////////////////////////////////////////////////////////////////
 |-----------------------------------------------------------------------------------------------------------
 
@@ -46,12 +46,12 @@ session_start();
 // Loads the logger if activated 
 	include($ajaxpathto_logger_file."/ajaxlogger.php");
 // usage:
-// if($logenabled){wlog("$ SESSION",$_SESSION,$_SESSION["ajaxlogfile"],__FILE__,__LINE__);
+// if($logenabled){wlog("$ SESSION",$_SESSION,$_SESSION["ajaxlogfile"],__FILE__,__LINE__);}
 // if($logenabled){wlog("Dans la procedure X","",$_SESSION["ajaxlogfile"],__FILE__,__LINE__);}
 // if($logenabled){wlog($Arg1,$Arg2,$_SESSION["ajaxlogfile"],__FILE__,__LINE__);}
 //
 // for use inside individual functions :
-// if($_SESSION["logenabled"]){wlog("$ SESSION",$_SESSION,$_SESSION["ajaxlogfile"],__FILE__,__LINE__);
+// if($_SESSION["logenabled"]){wlog("$ SESSION",$_SESSION,$_SESSION["ajaxlogfile"],__FILE__,__LINE__);}
 // if($_SESSION["logenabled"]){wlog("Dans la procedure X","",$_SESSION["ajaxlogfile"],__FILE__,__LINE__);}
 // if($_SESSION["logenabled"]){wlog($Arg1,$Arg2,$_SESSION["ajaxlogfile"],__FILE__,__LINE__);}
 //////////////////////////////////////////////////////////////////////////////////////////////////////////
