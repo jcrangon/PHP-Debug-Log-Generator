@@ -1,26 +1,22 @@
 <?php
 session_start();
-//////////////////////////  LOGGER /////////////////////////////////////
-// Enter the relative path to debug.conf.php :                              
-    $ajaxpathto_debug_conf="./debug.conf.php";
-//Enter relative path to logger folder :
-    $ajaxpathto_logger_file="./";
-////////////////////////////////////////////////////////////////////////
-// Loads the logger if activated 
-	include($ajaxpathto_logger_file."/ajaxlogger.php");
-// usage:
-// if($logenabled){wlog("$ SESSION",$_SESSION,$_SESSION["ajaxlogfile"],__FILE__,__LINE__);}
-// if($logenabled){wlog("Dans la procedure X","",$_SESSION["ajaxlogfile"],__FILE__,__LINE__);}
-// if($logenabled){wlog($Arg1,$Arg2,$_SESSION["ajaxlogfile"],__FILE__,__LINE__);}
-//
-// for use inside individual functions :
-// if($_SESSION["logenabled"]){wlog("$ SESSION",$_SESSION,$_SESSION["ajaxlogfile"],__FILE__,__LINE__);}
-// if($_SESSION["logenabled"]){wlog("Dans la procedure X","",$_SESSION["ajaxlogfile"],__FILE__,__LINE__);}
-// if($_SESSION["logenabled"]){wlog($Arg1,$Arg2,$_SESSION["ajaxlogfile"],__FILE__,__LINE__);}
-//////////////////////////////////////////////////////////////////////////////////////////////////////////
 
 function write_file($file,$txt){
 	if(!$handle = fopen($file, "w+")){
+		return false;
+	}
+	if(fwrite($handle,$txt,strlen($txt))===false){
+		fclose($handle);
+		return false;
+	}
+	else{
+		fclose($handle);
+		return true;
+	}
+}
+
+function append_data_in_file($file,$txt){
+	if(!$handle = fopen($file, "a")){
 		return false;
 	}
 	if(fwrite($handle,$txt,strlen($txt))===false){
@@ -50,8 +46,26 @@ if($setstatus===false){
 	exit();
 }
 else{
+	$file='./log.txt';
+	if($_SESSION["logenabled"]){
+		$txt="\n\n*********** DESACTIVATION DU LOGGER **********\n";
+	}
+	else{
+		$txt="\n\n*********** REACTIVATION DU LOGGER **********\n";
+	}
+	append_data_in_file($file,$txt);
+	$content=file_get_contents($file);
+	$htmlcontent="<pre>".$content."</pre>";
+	$file="./log.php";
+	if(!$fh=fopen($file,"w")){
+		echo "cannotopenlogphpfile";
+		exit();
+	}
+	else{
+		fwrite($fh,$htmlcontent);
+		fclose($fh);
+	}
 	echo "oktoutbon";
-	if($logenabled){wlog("*********** DESACTIVATION DU LOGGER ********** ","BYE !!!",$_SESSION["ajaxlogfile"],__FILE__,__LINE__);}
 	exit();
 }
 ?>

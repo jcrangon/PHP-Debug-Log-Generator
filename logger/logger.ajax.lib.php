@@ -172,11 +172,11 @@ function loadajaxlogpage($content){
 	$file=$_SESSION["ajaxlogpage"];
 	if(!$fh=fopen($file,"w")){
 			die("ERROR : cannot fopen log page");
-		}
-		else{
-			fwrite($fh,$content);
-			fclose($fh);
-		}
+	}
+	else{
+		fwrite($fh,$content);
+		fclose($fh);
+	}
 }
 
 ?>

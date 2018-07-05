@@ -1,9 +1,24 @@
 # PHP-Debug-Log-Generator
 A simple log system that helps debugging php web pages and php ajax routine.
 The following explains installation and configuration of the logger.
+
+First, Add the two following lines into the <HEAD> section of the page
+Making sure the paths are correctly inserted
+|------------------------------------------------------------------------
+<script src="PATH/TO/logger/jquery/jquery-3.1.1.min.js"></script>
+<script src="PATH/TO/logger/js/logger.js"></script>
+|------------------------------------------------------------------------
+
+I. Full control Mode 
+	This mode provide a grouped set of 3 buttons to control
+		- Display
+		- Erasing
+		- Deactivation/Reactvation
+	of the logger system.
+
 1. Copy the 'logger' folder into your website folder.
 2. Move the file 'debug.conf.php' to your 'conf' folder if you have one, or leave it inside the logger folder.
-3. Place the following code on the php page you want to debug just under the 'session_start()' instruction.
+3. Paste the following code on the php page you want to debug just under the 'session_start()' instruction.
 
 session_start();
 |------------------------------------------------------------------------
@@ -27,20 +42,15 @@ session_start();
 //////////////////////////////////////////////////////////////////////////////////////////////////////
 |-----------------------------------------------------------------------------------------------------------
 
-4. Add the two following lines into the <HEAD> section of the page
-Making sure the paths are correctly inserted
-|------------------------------------------------------------------------
-<script src="PATH/TO/logger/jquery/jquery-3.1.1.min.js"></script>
-<script src="PATH/TO/logger/js/logger.js"></script>
-|------------------------------------------------------------------------
 
-5. In order to get acces to the control button directly on the page, paste the following code in the top level
+4. In order to get acces to the control button directly on the page, paste the following code in the top level
 <div> of the page:
 |-----------------------------------------------------------------------------------------------------------
   <?php if($_SESSION["usedebug"]==1){include($_SESSION["loggerdiv"]); }?>
 |-----------------------------------------------------------------------------------------------------------
 
-6. If the code is an AJAX routine, paste the following right below the 'session_start()' instruction
+
+5. If the code is an AJAX routine, paste the following right below the 'session_start()' instruction
 
 session_start();
 |------------------------------------------------------------------------
@@ -64,7 +74,7 @@ session_start();
 //////////////////////////////////////////////////////////////////////////////////////////////////////////
 |-----------------------------------------------------------------------------------------------------------
 
-7. Edit the file 'debug.conf.php' :
+6. Edit the file 'debug.conf.php' :
    Edit the verbosity level (1 -> low, 2->medium, 3->max)
 
 /////////////////////////////////////////////////////////////////////////////
@@ -74,7 +84,7 @@ $_SESSION["debugverbose"]=1; // range 1-3                                  //
 //
 /////////////////////////////////////////////////////////////////////////////
 
-8. Usage: place this line inside the code where you want to log variables or check 
+7. Usage: place this line inside the code where you want to log variables or check 
 the execution of the code :
     if($logenabled){wlog($Arg1,$Arg2,$_SESSION["logfile"],__FILE__,__LINE__);} 
     $Arg1 = description of what is being logged
@@ -83,6 +93,34 @@ the execution of the code :
 Using the controls button :
   - 'Show Log' open a new tab in the browser and displays the content of the log file
   - 'clear Log' deletes all contents il the log file.
+  - 'Deactivation/Reactivation' suspends/restart logger system
+ 
+ 
+II. Single Buttons Control Mode
+
+	This mode is to be used when no logging is needed on the displayed page but rather only in
+	Ajax routine lauched from that main page.
+	It provide the user with individual buttons allowing display, erasing and de-reactivation
+
+1. Copy the 'logger' folder into your website folder.
+2. Move the file 'debug.conf.php' to your 'conf' folder if you have one, or leave it inside the logger folder.
+3. Paste the following code on the php page you want to debug just under the 'session_start()' instruction.
+
+//////////////////////////  MIN LOGGER /////////////////////////////////////
+// Enter the relative path to debug.conf.php :                              
+    $pathto_debug_conf="../logger/debug.conf.php";
+//Enter relative path to logger folder :
+    $pathto_logger_file="../logger";
+////////////////////////////////////////////////////////////////////////
+// Loads the logger if activated 
+	include($pathto_logger_file."/min_logger.php");
+////////////////////////////////////////////////////////////////////////
+
+4. Paste the following individual buttons where ever you need them on the main page
+	<?php if($_SESSION["usedebug"]==1){include($_SESSION["showdebuglog"]); }?>  // Showlog button
+	<?php if($_SESSION["usedebug"]==1){include($_SESSION["erasedebuglog"]); }?> // Clearlog button
+	<?php if($_SESSION["usedebug"]==1){include($_SESSION["de_reactdebuglog"]); }?> //Deactivate/Reactivate Button
+
 
 Found this simple, logging systeme very practical to debug such things as google recaptcha for instance.
 

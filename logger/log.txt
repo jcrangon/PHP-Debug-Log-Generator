@@ -1,24 +1,23 @@
 
 
- ..... Starting the log ............. 
-$ lsfjsqilk sdlvsd  msvdmsodml,sdmv =  
+*********** REACTIVATION DU LOGGER **********
 
 
- ..... Starting the AJAX log ............. 
-*********** DESACTIVATION DU LOGGER **********  =  
+*********** DESACTIVATION DU LOGGER **********
 
 
- ..... Starting the log ............. 
-$ lsfjsqilk sdlvsd  msvdmsodml,sdmv =  
-
-
- ..... Starting the AJAX log ............. 
-*********** DESACTIVATION DU LOGGER **********  = BYE !!! 
+*********** REACTIVATION DU LOGGER **********
 
 
  ..... Starting the log ............. 
-$ lsfjsqilk sdlvsd  msvdmsodml,sdmv =  
+Test - Test - Test - Test !!! =  
+
+
+*********** DESACTIVATION DU LOGGER **********
+
+
+*********** REACTIVATION DU LOGGER **********
 
 
  ..... Starting the log ............. 
-$ lsfjsqilk sdlvsd  msvdmsodml,sdmv =  
+Test - Test - Test - Test !!! =  

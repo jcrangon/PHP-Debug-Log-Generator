@@ -1,0 +1,1 @@
+<a href="<?php  echo $_SESSION["clearlog"];?>" target="_blank" ><input type="button" value="Clear Log" style="background-color:#FF6600;cursor:pointer;"/></a>

@@ -27,6 +27,9 @@ function mkpaths($pathtologger){
 	$_SESSION["clearlog"]=$_SESSION["pathtologger"]."clearlog.php";
 	$_SESSION["loggerlib"]=$_SESSION["pathtologger"]."logger.lib.php";
 	$_SESSION["loggerdiv"]=$_SESSION["pathtologger"]."loggerdiv.php";
+	$_SESSION["showdebuglog"]=$_SESSION["pathtologger"]."showdebuglog.php";
+	$_SESSION["erasedebuglog"]=$_SESSION["pathtologger"]."erasedebuglog.php";
+	$_SESSION["de_reactdebuglog"]=$_SESSION["pathtologger"]."de_reactdebuglog.php";
 }
 
 function mkajaxpaths($ajaxpathtologger){

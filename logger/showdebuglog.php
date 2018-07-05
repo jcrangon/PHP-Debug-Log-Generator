@@ -1,0 +1,1 @@
+<a href="<?php  echo $_SESSION["logpage"];?>" target="_blank" ><input type="button" value="Show Log" style="background-color:#00FF00;cursor:pointer;" /></a>

@@ -56,6 +56,10 @@ function changedebugstatus(status,pathtologger){
 					alert("echec ecriture fichier");
 				break;
 				
+				case "cannotopenlogphpfile": 
+					alert("Echec ecriture log.php");
+				break;
+				
 				case "oktoutbon":                     // pas d"'erreur retournée'
 					location.reload();
 				break;
