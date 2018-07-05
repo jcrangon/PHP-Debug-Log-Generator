@@ -123,5 +123,6 @@ II. Single Buttons Control Mode
 
 
 Found this simple, logging systeme very practical to debug such things as google recaptcha for instance.
+Single buttons mode is very useful for remote conrol of CRON JOBS log routines....
 
 Have fun!!
