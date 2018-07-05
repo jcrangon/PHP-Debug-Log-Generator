@@ -9,11 +9,11 @@ session_start();
 |------------------------------------------------------------------------
 //////////////////////////  LOGGER /////////////////////////////////////
 // Enter the relative path to debug.conf.php :                              
-    $pathto_debug_conf="./config/debug.conf.php";
+    $pathto_debug_conf="PATH/TO/debug.conf.php";
 //Enter relative path to logger folder :
-    $pathto_logger_file="./logger";
+    $pathto_logger_file="PATH/TO/logger";
 ////////////////////////////////////////////////////////////////////////
-// Loads the logger if activated 
+// Loads the logger if activated - Do not Modify
 	include($pathto_logger_file."/logger.php");
 // usage in script:	
 // if($logenabled){wlog("$ SESSION",$_SESSION,$_SESSION["logfile"],__FILE__,__LINE__);}
@@ -21,29 +21,36 @@ session_start();
 // if($logenabled){wlog($Arg1,$Arg2,$_SESSION["logfile"],__FILE__,__LINE__);}
 //
 // to use inside individual functions :
-// if($_SESSION["logenabled"]){wlog("$ SESSION",$_SESSION,$_SESSION["logfile"],__FILE__,__LINE__);}
+// if($_SESSION["logenabled"]){wlog("$ SESSION",$_SESSION,$_SESSION["logfile"],__FILE__,__LINE__));
 // if($_SESSION["logenabled"]){wlog("Dans la procedure X","",$_SESSION["logfile"],__FILE__,__LINE__);} 
 // if($_SESSION["logenabled"]){wlog($Arg1,$Arg2,$_SESSION["logfile"],__FILE__,__LINE__);}
 //////////////////////////////////////////////////////////////////////////////////////////////////////
 |-----------------------------------------------------------------------------------------------------------
 
-4. In order to get acces to the control button directly on the page, paste the following code in the top level
+4. Add the two following lines into the <HEAD> section of the page
+Making sure the paths are correctly inserted
+|------------------------------------------------------------------------
+<script src="PATH/TO/logger/jquery/jquery-3.1.1.min.js"></script>
+<script src="PATH/TO/logger/js/logger.js"></script>
+|------------------------------------------------------------------------
+
+5. In order to get acces to the control button directly on the page, paste the following code in the top level
 <div> of the page:
 |-----------------------------------------------------------------------------------------------------------
   <?php if($_SESSION["usedebug"]==1){include($_SESSION["loggerdiv"]); }?>
 |-----------------------------------------------------------------------------------------------------------
 
-5. If the code is an AJAX routine, paste the following right below the 'session_start()' instruction
+6. If the code is an AJAX routine, paste the following right below the 'session_start()' instruction
 
 session_start();
 |------------------------------------------------------------------------
 //////////////////////////  LOGGER /////////////////////////////////////
 // Enter the relative path to debug.conf.php :                              
-    $ajaxpathto_debug_conf="../config/debug.conf.php";
+    $ajaxpathto_debug_conf="PATH/TO/debug.conf.php";
 //Enter relative path to logger folder :
-    $ajaxpathto_logger_file="../logger";
+    $ajaxpathto_logger_file="PATH/TO/logger";
 ////////////////////////////////////////////////////////////////////////
-// Loads the logger if activated 
+// Loads the logger if activated - Do not Modify
 	include($ajaxpathto_logger_file."/ajaxlogger.php");
 // usage:
 // if($logenabled){wlog("$ SESSION",$_SESSION,$_SESSION["ajaxlogfile"],__FILE__,__LINE__);}
@@ -57,7 +64,7 @@ session_start();
 //////////////////////////////////////////////////////////////////////////////////////////////////////////
 |-----------------------------------------------------------------------------------------------------------
 
-6. Edit the file 'debug.conf.php' :
+7. Edit the file 'debug.conf.php' :
    Edit the verbosity level (1 -> low, 2->medium, 3->max)
 
 /////////////////////////////////////////////////////////////////////////////
@@ -67,7 +74,7 @@ $_SESSION["debugverbose"]=1; // range 1-3                                  //
 //
 /////////////////////////////////////////////////////////////////////////////
 
-7. Usage: place this line inside the code where you want to log variables or check 
+8. Usage: place this line inside the code where you want to log variables or check 
 the execution of the code :
     if($logenabled){wlog($Arg1,$Arg2,$_SESSION["logfile"],__FILE__,__LINE__);} 
     $Arg1 = description of what is being logged

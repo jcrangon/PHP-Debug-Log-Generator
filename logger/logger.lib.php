@@ -201,15 +201,14 @@ function wlog( $varname, $vardata,$file, $f,$l){
 }
 
 function loadlogpage($content){
-	
 	$file=$_SESSION["logpage"];
 	if(!$fh=fopen($file,"w")){
 			die("ERROR : cannot fopen log page");
-		}
-		else{
-			fwrite($fh,$content);
-			fclose($fh);
-		}
+	}
+	else{
+		fwrite($fh,$content);
+		fclose($fh);
+	}
 }
 
 ?>
