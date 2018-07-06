@@ -42,6 +42,9 @@ function mkline($lmsg,$sp){
 	if($sp==1){
 		$line="\n\n";
 	}
+	else{
+		$line="";
+	}
 	
 	switch ($_SESSION["debugverbose"]){
 		
@@ -129,7 +132,7 @@ function mklog($f,$l){
 				break;
 			
 			default:
-				$lmsg=" ..... Starting the log .............";
+				$lmsg=" ..... Starting the log .............\n";
 				$line=mkline($lmsg,1);
 				fwrite($fh,$line);
 				fclose($fh);

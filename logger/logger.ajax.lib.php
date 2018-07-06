@@ -41,6 +41,9 @@ function mkajaxline($lmsg,$sp){
 	if($sp==1){
 		$line="\n\n";
 	}
+	else{
+		$line="";
+	}
 	
 	switch ($_SESSION["debugverbose"]){
 		
@@ -117,7 +120,7 @@ function mkajaxlog($f,$l){
 				break;
 			
 			default:
-				$lmsg=" ..... Starting the AJAX log .............";
+				$lmsg=" ..... Starting the AJAX log .............\n";
 				$line=mkajaxline($lmsg,1);
 				fwrite($fh,$line);
 				fclose($fh);

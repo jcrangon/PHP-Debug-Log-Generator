@@ -1,5 +1,6 @@
 <?php
 session_start();
+
 //////////////////////////  LOGGER /////////////////////////////////////
 // Enter the relative path to debug.conf.php :                              
     $pathto_debug_conf="../logger/debug.conf.php";
@@ -20,12 +21,11 @@ session_start();
 //////////////////////////////////////////////////////////////////////////////////////////////////////
 
 if($logenabled){wlog("Test - Test - Test - Test !!!","",$_SESSION["logfile"],__FILE__,__LINE__);}
-
-
 ?>
 <!DOCTYPE html>
 <html style="padding:0;margin:0;width:100%;height:100px;">
 	<head>
+		<link rel="icon" type="image/png" href="favicon/favicon.ico" />
 		<!-- Adjust Paths for JS files -->
 		<script src="../logger/jquery/jquery-3.1.1.min.js"></script>
 		<script src="../logger/js/logger.js"></script>
@@ -33,6 +33,10 @@ if($logenabled){wlog("Test - Test - Test - Test !!!","",$_SESSION["logfile"],__F
 	</head>
 	
 	<body>
-		<?php if($_SESSION["usedebug"]==1){include($_SESSION["loggerdiv"]); }?>
+		<?php if($_SESSION["usedebug"]==1){include($_SESSION["loggerdiv"]);}?>
 	</body>
 </html>
+<?php if($logenabled){wlog("fin du script .....","",$_SESSION["logfile"],__FILE__,__LINE__);} ?>
+
+
+

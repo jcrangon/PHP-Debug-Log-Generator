@@ -35,9 +35,11 @@ if(!isset($_POST["status"]) || !is_numeric($_POST["status"])){
 }
 $status=$_POST["status"];
 
-$txt="logenable=".$status."\n";
+$txt="<?php\n";
+$txt.="\$logginactivated_state=".$status.";\n";
+$txt.="?>\n";
 
-$file="./activate.txt";
+$file="./activate.dat.php";
 
 $setstatus=write_file($file,$txt);
 

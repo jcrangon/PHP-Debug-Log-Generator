@@ -40,29 +40,6 @@ function mkajaxpaths($ajaxpathtologger){
 	$_SESSION["ajaxloggerlib"]=$_SESSION["ajaxpathtologger"]."logger.ajax.lib.php";
 }
 
-function checkdebugstatus($pathtologgerfile){
-	$filex=$pathtologgerfile."/activate.txt";
-	$file = new SplFileObject($filex);
-	$tabline=array();
-	while (!$file->eof()) {
-	    $tabline[]=$file->fgets();
-	}
-	$status=explode("=",$tabline[0]);
-	if($status[0]!="logenable"){
-		$file = null;
-		die("Etat debogage illisible ... Termination");
-	}
-	else{
-		if($status[1]==1){
-			$file = null;
-			return 1;
-		}
-		else{
-			$file = null;
-			return 0;
-		}
-	}
-}
 //
 /////////////////////////////////////////////////////////////////////////////
 ?>
