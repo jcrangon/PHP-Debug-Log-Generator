@@ -33,6 +33,7 @@ function checkajaxloggerenv($f,$l){
 
 function mkajaxline($lmsg,$sp){
 	$now=date("d-m-Y H:i:s");
+	$_SERVER["REMOTE_ADDR"]     = array_key_exists( 'REMOTE_ADDR',      $_SERVER) ? $_SERVER['REMOTE_ADDR']     : '127.0.0.1'; 
 	$ipAddress = $_SERVER['REMOTE_ADDR'];
 	if (array_key_exists('HTTP_X_FORWARDED_FOR', $_SERVER)) {
 		$exploded= explode(',', $_SERVER['HTTP_X_FORWARDED_FOR']);
