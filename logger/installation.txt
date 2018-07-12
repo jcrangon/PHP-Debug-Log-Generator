@@ -36,7 +36,7 @@ session_start();
 // if($logenabled){wlog($Arg1,$Arg2,$_SESSION["logfile"],__FILE__,__LINE__);}
 //
 // to use inside individual functions :
-// if($_SESSION["logenabled"]){wlog("$ SESSION",$_SESSION,$_SESSION["logfile"],__FILE__,__LINE__));
+// if($_SESSION["logenabled"]){wlog("$ SESSION",$_SESSION,$_SESSION["logfile"],__FILE__,__LINE__);}
 // if($_SESSION["logenabled"]){wlog("Dans la procedure X","",$_SESSION["logfile"],__FILE__,__LINE__);} 
 // if($_SESSION["logenabled"]){wlog($Arg1,$Arg2,$_SESSION["logfile"],__FILE__,__LINE__);}
 //////////////////////////////////////////////////////////////////////////////////////////////////////
